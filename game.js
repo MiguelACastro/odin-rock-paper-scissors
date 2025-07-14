@@ -1,3 +1,6 @@
+let humanScore = 0
+let computerScore = 0
+
 function getComputerChoice() {
     let n = Math.floor(Math.random() * 3)
     let choice
@@ -20,5 +23,35 @@ function getHumanChoice() {
     return choice
 }
 
-console.log(getComputerChoice())
-console.log(getHumanChoice())
+function playRound(humanChoice, computerChoice) {
+    let humanChoiceLower = humanChoice.toLowerCase()
+    let message
+    if(humanChoiceLower == computerChoice) {
+        message = "Draw"
+    }
+    else if(humanChoiceLower == "rock" && computerChoice == "scissors") {
+        message = "Rock beats scissors, you win!"
+        humanScore++
+    }
+    else if(humanChoiceLower == "paper" && computerChoice == "rock") {
+        message = "Paper beats rock, you win!"
+        humanScore++
+    }
+    else if(humanChoiceLower == "scissors" && computerChoice == "paper") {
+        message = "Scissors beats paper, you win!"
+        humanScore++
+    }
+    else if(humanChoiceLower == "rock" && computerChoice == "paper") {
+        message = "Paper beats rock, you lose!"
+        computerScore++
+    }
+    else if(humanChoiceLower == "paper" && computerChoice == "scissors") {
+        message = "Scissors beat paper, you lose!"
+        computerScore++
+    }
+    else if(humanChoiceLower == "scissors" && computerChoice == "rock") {
+        message = "Rock beats scissors, you lose!"
+        computerScore++
+    }
+    console.log(message + " HScore: " + humanScore + " CScore: " + computerScore)
+}
