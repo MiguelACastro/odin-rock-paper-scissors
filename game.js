@@ -20,8 +20,13 @@ function getComputerChoice() {
 
 function playRound(humanChoice, computerChoice) {
     const resultNode = document.querySelector("#result > p")
+    const winnerNode = document.querySelector("#winner")
+
     if(resultNode) {
         resultNode.remove()
+    }
+    if(winnerNode) {
+        winnerNode.remove()
     }
 
     let humanChoiceLower = humanChoice.toLowerCase()
@@ -65,15 +70,14 @@ function playRound(humanChoice, computerChoice) {
     document.querySelector("#result").appendChild(result)
 
     const humanScoreDisplay = document.querySelector("#human-score")
-    humanScoreDisplay.textContent = "Human Score: " + humanScore
+    humanScoreDisplay.textContent = "Player Score: " + humanScore
 
     const computerScoreDisplay = document.querySelector("#computer-score")
     computerScoreDisplay.textContent = "Computer Score: " + computerScore
 
-    alert("Computer chose " + computerChoice +
-        "\n" + message +
-        "\nHuman Score: " + humanScore +
-        "\nComputer Score: " + computerScore)
+    if(humanScore == 5 || computerScore == 5) {
+        displayWinner()
+    }
 
 }
 
@@ -93,6 +97,20 @@ function getEmoji(choice) {
         break;
     }
     return emoji
+}
+
+function displayWinner() {
+    const winner = (humanScore > computerScore ? "Player" : "Computer") + " wins!"
+
+    const winnerText = document.createElement("p")
+    winnerText.textContent = winner
+    winnerText.id = "winner"
+
+    const scores = document.querySelector("#scores")
+    scores.appendChild(winnerText)
+
+    humanScore = 0
+    computerScore = 0
 }
 
 const buttons = document.querySelectorAll("button")
