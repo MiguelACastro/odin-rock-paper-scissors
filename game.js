@@ -54,4 +54,10 @@ function playRound(humanChoice, computerChoice) {
         "\nComputer Score: " + computerScore)
 }
 
+const buttons = document.querySelectorAll("button")
 
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        playRound(button.id, getComputerChoice())
+    })
+})
