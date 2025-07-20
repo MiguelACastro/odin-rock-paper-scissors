@@ -1,0 +1,43 @@
+body,
+#result,
+#choice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body, 
+button {
+    font-size: 20px;
+}
+
+body {
+    flex-direction: column;
+    margin-top: 12%;
+}
+
+
+#result {
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+#choice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+#choice div {
+    font-size: 64px; 
+}
+
+button {
+    height: 60px;
+    width: 120px;
+}
+
+#scores p {
+    margin: 5px;
+}
